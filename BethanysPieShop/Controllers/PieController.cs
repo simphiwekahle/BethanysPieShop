@@ -9,6 +9,7 @@ public class PieController(
 {
     public IActionResult List()
     {
+        ViewBag.CurrentCategory = "Cheese cakes";
         return View(pieRepository.GetAllPies);
     }
 }
