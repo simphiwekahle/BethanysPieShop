@@ -1,4 +1,9 @@
+using BethanysPieShop.Models.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<ICategoryRepository, MockCategoryRepository>();
+builder.Services.AddScoped<IPieRepository, MockPieRepository>();
 
 builder.Services.AddControllersWithViews(); // Ensures that our app knows about ASP.NET Core MVC
 
