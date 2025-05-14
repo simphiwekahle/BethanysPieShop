@@ -35,4 +35,6 @@ app.MapDefaultControllerRoute();
     * This is an endpoint middleware
 */
 
+DbInitializer.Seed(app);
+
 app.Run();
