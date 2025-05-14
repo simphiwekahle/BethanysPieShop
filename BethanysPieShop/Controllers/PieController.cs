@@ -12,7 +12,7 @@ public class PieController(
     {
         PieListViewModel pieListViewModel = new PieListViewModel(
             pieRepository.GetAllPies,
-            "Cheese cakes");
+            "All Pies");
 
         return View(pieListViewModel);
     }
