@@ -24,7 +24,6 @@ public class PieController(
         if (pie == null)
             return NotFound();
         
-
         return View(pie);
     }
 }
