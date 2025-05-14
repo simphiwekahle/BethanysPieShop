@@ -20,7 +20,7 @@ var app = builder.Build();
 app.UseStaticFiles(); // Pre-configured to look for incoming requests for static files
 /*
     In .NET 9, we use the new middleware below for static files related requests
-    'app.MapStaticAsset();'
+    'app.MapStaticAssets();'
 */
 
 if (app.Environment.IsDevelopment())
@@ -29,6 +29,11 @@ if (app.Environment.IsDevelopment())
 }
 
 app.MapDefaultControllerRoute();
+// Deafult Controller Route
+//
+// name: "default"
+// pattern: "{controller=Home}/{action=Index}/{id:int?}"
+
 /* 
     * This enables the ability to navigate to our pages.
     * Ensures that ASP.NET Core is able to handle incoming requests.
