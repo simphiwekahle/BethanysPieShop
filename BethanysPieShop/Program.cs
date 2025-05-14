@@ -29,6 +29,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.MapDefaultControllerRoute();
+// Deafult Controller Route
+// "{controller=Home}/{action=Index}/{id?}"
+
 /* 
     * This enables the ability to navigate to our pages.
     * Ensures that ASP.NET Core is able to handle incoming requests.

@@ -11,9 +11,20 @@ public class PieController(
     public IActionResult List()
     {
         PieListViewModel pieListViewModel = new PieListViewModel(
-            pieRepository.GetAllPies, 
+            pieRepository.GetAllPies,
             "Cheese cakes");
 
         return View(pieListViewModel);
+    }
+
+    public IActionResult Details(int id)
+    {
+        var pie = pieRepository.GetPieById(id);
+
+        if (pie == null)
+            return NotFound();
+        
+
+        return View(pie);
     }
 }
