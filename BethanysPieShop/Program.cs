@@ -7,6 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IPieRepository, PieRepository>();
 
+builder.Services.AddScoped<IShoppingCart, ShoppingCart>(
+    sp => ShoppingCart.GetCart(sp));
+builder.Services.AddSession();
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddControllersWithViews(); // Ensures that our app knows about ASP.NET Core MVC
 
 builder.Services.AddDbContext<BethanysPieShopDbContext>(options =>
@@ -22,6 +27,8 @@ app.UseStaticFiles(); // Pre-configured to look for incoming requests for static
     In .NET 9, we use the new middleware below for static files related requests
     'app.MapStaticAssets();'
 */
+
+app.UseSession();
 
 if (app.Environment.IsDevelopment())
 {
