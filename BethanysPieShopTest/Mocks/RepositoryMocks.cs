@@ -4,7 +4,7 @@ using Moq;
 
 namespace BethanysPieShopTest.Mocks;
 
-public class RepositoryMocks
+public static class RepositoryMocks
 {
     public static Mock<IPieRepository> GetPieRepository()
     {
