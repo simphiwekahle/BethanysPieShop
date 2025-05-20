@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IPieRepository, PieRepository>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 
 builder.Services.AddScoped<IShoppingCart, ShoppingCart>(
     sp => ShoppingCart.GetCart(sp));
@@ -13,6 +14,8 @@ builder.Services.AddSession();
 builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddControllersWithViews(); // Ensures that our app knows about ASP.NET Core MVC
+
+builder.Services.AddRazorPages();
 
 builder.Services.AddDbContext<BethanysPieShopDbContext>(options =>
 {
@@ -46,6 +49,8 @@ app.MapDefaultControllerRoute();
     * Ensures that ASP.NET Core is able to handle incoming requests.
     * This is an endpoint middleware
 */
+
+app.MapRazorPages();
 
 DbInitializer.Seed(app);
 
