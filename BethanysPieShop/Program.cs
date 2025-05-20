@@ -15,6 +15,8 @@ builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddControllersWithViews(); // Ensures that our app knows about ASP.NET Core MVC
 
+builder.Services.AddRazorPages();
+
 builder.Services.AddDbContext<BethanysPieShopDbContext>(options =>
 {
     options.UseSqlServer(
@@ -47,6 +49,8 @@ app.MapDefaultControllerRoute();
     * Ensures that ASP.NET Core is able to handle incoming requests.
     * This is an endpoint middleware
 */
+
+app.MapRazorPages();
 
 DbInitializer.Seed(app);
 
