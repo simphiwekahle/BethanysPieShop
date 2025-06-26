@@ -25,4 +25,9 @@ public class PieRepository(
     {
         return context.Pies.FirstOrDefault(p => p.PieId == pieId);
     }
+
+    public IEnumerable<Pie> SearchPies(string searchQuery)
+    {
+        return context.Pies.Where(p => p.Name.Contains(searchQuery));
+    }
 }
