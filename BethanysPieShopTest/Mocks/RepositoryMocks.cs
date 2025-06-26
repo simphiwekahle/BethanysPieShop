@@ -167,19 +167,19 @@ public static class RepositoryMocks
     {
         var categories = new List<Category>
             {
-                new Category()
+                new ()
                 {
                     CategoryId = 1,
                     CategoryName = "Fruit Pies",
                     Description = "Lorem ipsum"
                 },
-                new Category()
+                new ()
                 {
                     CategoryId = 2,
                     CategoryName = "Cheese cakes",
                     Description = "Lorem ipsum"
                 },
-                new Category()
+                new ()
                 {
                     CategoryId = 3,
                     CategoryName = "Fruit Pies",
