@@ -23,11 +23,6 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (pies) {
-                    // var table = $("#piesTbl");
-                    // table.find("tr:not(:first)").remove();
-
-
-
                     $.each(pies, function (i, pie) {
                         $("tbody").append($("<tr>"));
                         appendElement = $("tbody tr").last();
@@ -37,7 +32,7 @@
                     });
                 },
                 error: function (xhr, status, error){
-                    console.log(chr)
+                    console.log(xhr)
                 }
             });
         });
