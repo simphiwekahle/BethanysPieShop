@@ -1,3 +1,4 @@
+using BethanysPieShop.App;
 using BethanysPieShop.Models;
 using BethanysPieShop.Models.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +22,9 @@ builder.Services.AddControllersWithViews() // Ensures that our app knows about A
     }); 
 
 builder.Services.AddRazorPages();
+
+builder.Services.AddRazorComponents()
+                    .AddInteractiveServerComponents();
 
 builder.Services.AddDbContext<BethanysPieShopDbContext>(options =>
 {
@@ -46,6 +50,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.MapDefaultControllerRoute();
+
+
 // Deafult Controller Route
 //
 // name: "default"
@@ -57,7 +63,12 @@ app.MapDefaultControllerRoute();
     * This is an endpoint middleware
 */
 
+app.UseAntiforgery();
+
 app.MapRazorPages();
+
+app.MapRazorComponents<App>()
+    .AddInteractiveServerRenderMode();
 
 //app.MapControllers(); // Required for APIs
 
