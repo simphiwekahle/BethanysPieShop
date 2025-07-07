@@ -1,0 +1,40 @@
+﻿<div class="my-5">
+    <h3 class="mb-4">Enter your search query</h3>
+    <input id="pieNameTxt" type="text" />
+    <button id="searchBtn" class="btn btn-secondary">Search</button>
+</div>
+
+<table id="piesTbl" class="mb-4">
+    <tbody></tbody>
+</table>
+
+<script type="text/javascript">
+    
+    $(document).ready(function(){
+        $("button").click(function(){
+            var searchQuery = $.trim($("#pieNameTxt").val());
+
+            $("tbody").html("");
+
+            $.ajax({
+                type: "POST",
+                url: "/api/Search",
+                data: "\"" + searchQuery + "\"",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (pies) {
+                    $.each(pies, function (i, pie) {
+                        $("tbody").append($("<tr>"));
+                        appendElement = $("tbody tr").last();
+                        appendElement.append($("<td>").html('<img src=' + pie.imageThumbnailUrl + ' width=250 class="rounded m-2">'));
+                        appendElement.append($("<td>").html('<h2><a href="/pie/Details/' + pie.pieId + '" class="pie-link m-2">' + pie.name + '</a></h2>'));
+                        appendElement.append($("<td>").html(pie.price));
+                    });
+                },
+                error: function (xhr, status, error){
+                    console.log(xhr)
+                }
+            });
+        });
+    });
+</script>

@@ -35,11 +35,23 @@ public class PieController(
 
     public IActionResult Details(int id)
     {
+        if (!ModelState.IsValid)
+        {
+            return View();
+        }
+
         var pie = pieRepository.GetPieById(id);
 
-        if (pie == null)
+        if (pie is null)
+        {
             return NotFound();
-        
+        }
+           
         return View(pie);
+    }
+
+    public IActionResult Search()
+    {
+        return View();
     }
 }
